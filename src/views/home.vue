@@ -1,7 +1,13 @@
 <template>
   <div class="home-root-view-css">
-    <img class="home-root-img-css"
-         :src="logo">
+    <div class="home-image-root-view-css">
+      <img class="home-root-img-css"
+           :src="logo">
+      <img class="home-root-img-css"
+           :src="require('../assets/ext-logo.png')">
+      <img class="home-root-img-css"
+           src="../assets/vue-logo.png">
+    </div>
     <span class="home-root-text-view-css">{{ text }}</span>
   </div>
 </template>
@@ -41,7 +47,14 @@ export default {
   justify-content: center;
 }
 
-.home-root-img-css{
+.home-image-root-view-css {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-root-img-css {
   width: 300px;
   height: 300px;
   margin-bottom: 20px;

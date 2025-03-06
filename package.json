@@ -87,6 +87,7 @@
     "ts-loader": "^9.4.4",
     "ts-node": "^10.8.1",
     "tsx": "^4.7.1",
-    "typescript": "~5.4.0"
+    "typescript": "~5.4.0",
+    "compressing": "^1.10.0"
   }
 }

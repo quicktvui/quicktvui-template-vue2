@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const ESDynamicImportPlugin = require('@extscreen/es3-dynamic-import-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
-const watchPlugin = require('./webpack-watch.cjs');
+const watchPlugin = require('./webpack-watch.ts');
 
 const pkg = require('../package.json')
 let cssLoader = '@huantv/vue-css-loader'
@@ -61,6 +61,9 @@ module.exports = {
       __VUE_PROD_DEVTOOLS__: false,
       __PLATFORM__: null,
       __DEV__: true
+    }),
+    new webpack.optimize.LimitChunkCountPlugin({
+      maxChunks: 1,
     }),
     new ESDynamicImportPlugin(),
     new CleanWebpackPlugin()

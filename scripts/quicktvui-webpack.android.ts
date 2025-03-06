@@ -21,7 +21,13 @@ module.exports = {
     assetModuleFilename: '[hash][ext][query]',
     // CDN path can be configured to load children bundles from remote server
     // publicPath: 'https://xxx/hippy/hippyVueNextDemo/',
-    publicPath: './'
+    publicPath: "./", // ✅ 生成的资源路径不会携带 host 和 port
+  },
+  devServer: {
+    static: {
+      directory: path.join(__dirname, "public"),
+      publicPath: "/", // ✅ 避免图片路径带上 host 和 port
+    },
   },
   optimization: {
     moduleIds: 'named',
@@ -71,15 +77,16 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('development'),
-        HOST: JSON.stringify(process.env.DEV_HOST || '127.0.0.1'),
-        PORT: JSON.stringify(process.env.DEV_PORT || 38989)
-      },
+      __PLATFORM__: JSON.stringify(platform),
+      __DEV__: false,
+      __TEST__: false,
+      __FEATURE_PROD_DEVTOOLS__: false,
+      __BROWSER__: false,
       __VUE_OPTIONS_API__: true,
       __VUE_PROD_DEVTOOLS__: false,
-      __PLATFORM__: null,
-      __DEV__: true
+      'process.env': {
+        NODE_ENV: JSON.stringify('production'),
+      },
     }),
     new CaseSensitivePathsPlugin(),
     new VueLoaderPlugin(),

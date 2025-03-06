@@ -1,6 +1,8 @@
 import index from "@/views/index";
 import error from "@/views/error";
 
+const home = () => import('./views/home');
+
 export default {
   disableAutoBack: true,
   limit: 5,
@@ -12,6 +14,11 @@ export default {
       path: '/index',
       name: 'index',
       component: index
+    },
+    {
+      path: '/home',
+      name: 'home',
+      component: home
     },
     {
       path: '/error',

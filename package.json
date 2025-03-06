@@ -5,9 +5,10 @@
   "private": true,
   "main": "./src/main.js",
   "scripts": {
-    "dev": "zx ./scripts/dev.cjs",
-    "pack": "zx ./scripts/pack.cjs",
-    "build": "zx ./scripts/build.cjs"
+    "dev": "tsx ./scripts/dev.ts",
+    "pack": "tsx ./scripts/pack.ts",
+    "clean:dist": "rimraf dist",
+    "build": "npm run clean:dist & tsx ./scripts/build.ts"
   },
   "dependencies": {
     "vue": "^2.6.10",
@@ -77,12 +78,15 @@
     "clean-webpack-plugin": "^4.0.0",
     "webpack-node-externals": "^3.0.0",
     "rollup-plugin-flow-no-whitespace": "^1.0.0",
-    "zx": "^8.0.1",
     "less": "^4.1.2",
     "less-loader": "^7.1.0",
     "webpack-obfuscator": "^3.5.1",
     "javascript-obfuscator": "^4.1.1",
     "esbuild": "^0.13.14",
-    "esbuild-loader": "^2.18.0"
+    "esbuild-loader": "^2.18.0",
+    "ts-loader": "^9.4.4",
+    "ts-node": "^10.8.1",
+    "tsx": "^4.7.1",
+    "typescript": "~5.4.0"
   }
 }
